@@ -10,7 +10,9 @@ const fontSizes = {
 // 자주 사용하는 색을 객체
 const colors = {
   BoxColor: "#141414",
-  TxtColor: "#ffffff",
+  commonTxt: "#ffffff",
+  BlackTxt : "#070707",
+  GreyTxt : "#939393",
   MainColor: "#999999",
   PointColor: "#27FF97", 
   HashColor : "#F0BB00"
@@ -42,8 +44,7 @@ const common = {
     7px 7px 20px 0px rgba(0,0,0,.1),
     4px 4px 5px 0px rgba(0,0,0,.1);
     outline: none;
-  `,
-
+  `
 
 };
 

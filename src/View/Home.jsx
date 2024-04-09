@@ -2,18 +2,17 @@ import styled from 'styled-components';
 
 function Home() {
     return (
-      <div>
-        <HiBtn></HiBtn>
-        <HiBtn></HiBtn>
-        <HiBtn></HiBtn>
-        <HiBtn></HiBtn>
-      </div>
+      <HomeConatainer>
+
+      </HomeConatainer>
     );
   }
   
   export default Home;
-  
-  const HiBtn = styled.button`
-    background : ${({ theme }) => theme.colors.MainColor};
-    ${({ theme }) => theme.common.StyledButton};
-  `
+
+  const HomeConatainer = styled.div`
+  background : ${({ theme }) => theme.colors.BoxColor};
+  ${({ theme }) => theme.common.flexCenterRow};
+  width : 100%;
+  height : 100vh;
+`
