@@ -22,13 +22,13 @@ const colors = {
 const common = {
   flexCenterRow: `
     display: flex;
-    justify-contents: center;
+    justify-content: center;
     align-items: center;
   `,
   flexCenterColumn: `
     display: flex;
     flex-direction: column;
-    justify-contents: center;
+    justify-content: center;
     align-items: center;
   `,
   StyledButton: `
@@ -44,8 +44,20 @@ const common = {
     7px 7px 20px 0px rgba(0,0,0,.1),
     4px 4px 5px 0px rgba(0,0,0,.1);
     outline: none;
-  `
-
+  `,
+  HeroContainer : `
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background : #141414;
+    width : 100%;
+    height : 100vh;
+    // 상하좌우
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  `,
 };
 
 // theme 객체에 감싸서 반환한다.

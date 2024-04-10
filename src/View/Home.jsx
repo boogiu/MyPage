@@ -3,7 +3,9 @@ import styled from 'styled-components';
 function Home() {
     return (
       <HomeConatainer>
-
+        <VideoPlayer muted autoPlay loop>
+            <source src={process.env.PUBLIC_URL + '/VideoSrc/Example.mp4'} type="video/mp4" />
+        </VideoPlayer>
       </HomeConatainer>
     );
   }
@@ -15,4 +17,12 @@ function Home() {
   ${({ theme }) => theme.common.flexCenterRow};
   width : 100%;
   height : 100vh;
+`
+const VideoPlayer = styled.video`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width : 100%;
+  height : 100%;
+  object-fit: cover;
 `

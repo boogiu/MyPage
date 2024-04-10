@@ -82,19 +82,19 @@ const ContainerGrid = styled.div`
     display: grid;
     width : 100%;
     height : 100%;
-    grid-template-rows: 1.5fr 1fr;
+
     gap : 30px;
+    @media screen and (max-width: 500px) {
+        grid-template-rows: 0.5fr 1fr;
+    }
+    @media screen and (min-width: 501px) {
+        grid-template-rows: 1.5fr 1fr;
+    }
 `
 
 const LinkGrid = styled.div`
     display: grid;
     width : 100%;    
-
-    @media screen and (max-width: 500px) {
-        grid-template-rows: 5fr 1fr;
-        gap : 10px;
-        height : 250px;
-    }
     @media screen and (min-width: 501px) {
         grid-template-columns:  5fr 1fr;
         gap : 15px;
@@ -105,9 +105,7 @@ const MenuGrid = styled.div`
     display: grid;
     width : 100%;
     @media screen and (max-width: 500px) {
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-        gap : 0px;
+        display:none;
     }
     @media screen and (min-width: 501px) {
         grid-template-columns: repeat(5, 1fr);
@@ -119,9 +117,7 @@ const MenuDiv = styled.div`
 const SNSBox = styled.div`
     display : flex;
     flex-direction: column;
-    @media screen and (max-width: 500px) {
-        display : none;
-    }
+    
 `
 const InfoGrid = styled.div`
     display: grid;
