@@ -184,7 +184,7 @@ function Header() {
     background: rgba(5, 5, 5, 0.20);
     backdrop-filter: blur(50px);
     color : white;
-    height: ${({ isHovered }) => (isHovered ? '280px' : '90px')};
+    height: ${({ isHovered }) => (isHovered ? '200px' : '90px')};
   `;
 
   const LogoDiv = styled.div`

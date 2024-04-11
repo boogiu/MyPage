@@ -20,13 +20,13 @@ function Messages() {
       <SlideContainer>
       <Wrapper>
         <SlideBox1 slideIndex={slideIndex}>
-          <ColorBox Color={"red"}>
+          <ColorBox>
             {/* 여기가 3번 슬라이드 */}
           </ColorBox>
-          <ColorBox Color={"blue"}>
+          <ColorBox>
             {/* 여기가 2번 슬라이드 */}
           </ColorBox>
-          <ColorBox Color={"green"}>
+          <ColorBox>
             {/* 여기가 1번 슬라이드 */}
             <h1>將‘s Comment</h1>
             <p>빠르기 보다는, 올바른 방향인가를 보겠습니다. 
@@ -39,13 +39,17 @@ function Messages() {
 
       <Wrapper>
         <SlideBox2 slideIndex={slideIndex}>
-          <ColorBox Color={"green"}>
-            {/* 여기가 1번 슬라이드 */}
+        <ColorBox>
+            <ImgComponent imagePath={"Weare2.png"}
+                Mheight={"200px"}
+                Mwidth={"200px"}
+                Dwidth={"200px"}
+                Dheight={"694px"}/>
           </ColorBox>
-          <ColorBox Color={"red"}>
+          <ColorBox>
           {/* 여기가 2번 슬라이드 */}
           </ColorBox>
-          <ColorBox Color={"blue"}>
+          <ColorBox>
            {/* 여기가 3번 슬라이드 */}
           </ColorBox>
           
@@ -110,7 +114,7 @@ const ColorBox = styled.div`
   width: 50vw;
   height: 100%;
   padding : 10%;
-  background: ${({ Color }) => Color};
+  background: transparent;
 `;
 const Button = styled.button`
   background: ${({ theme }) => theme.colors.ButtonColor};
@@ -124,10 +128,9 @@ const Button = styled.button`
 const BtnDiv = styled.div`
   position : absolute;
   z-index : 5;
-  border : 1px solid red;
   width : 100px;
   height : 20px;
-  top : 80%;
+  top : 85%;
   left : 5%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -135,7 +138,6 @@ const BtnDiv = styled.div`
 const DotDiv = styled.div`
   position : absolute;
   z-index : 5;
-  border : 1px solid red;
   width : 100px;
   height : 20px;
   top : 80%;
@@ -150,3 +152,38 @@ const Dot = styled.div`
   background: ${({ theme, slideIndex, Index }) =>
     slideIndex === Index ? theme.colors.HashColor : 'grey'};
 `;
+
+
+const ImageContainer = styled.div`
+height : auto;
+object-fit: ;
+background-color: transparent;
+  @media screen and (min-width: 501px) {
+    width : ${({ Dwidth }) => Dwidth};
+    height : ${({ Dheight }) => Dheight};
+    align-self : flex-end;
+  }
+  @media screen and (max-width: 500px) {
+    width : ${({ Mwidth }) => Mwidth};
+    height : ${({ Mheight }) => Mheight};
+    align-self : flex-end;
+  }
+`;
+const ImgComponent = ({ imagePath, rotate, Dwidth,Dheight, Mheight, Mwidth }) => {
+  return (
+      <ImageContainer 
+        rotate={rotate}
+        Mwith= {Mwidth}
+        Dwidth={Dwidth}
+        Mheight= {Mheight}
+        Dheight={Dheight}
+      >
+          <img src={`${process.env.PUBLIC_URL }/ImgSrc/${imagePath}`} 
+          alt="페이지 이미지" 
+          style={{ 
+            maxWidth: '100%', maxHeight: '100%' ,
+          }}/>
+      </ImageContainer>
+      
+  );
+};
