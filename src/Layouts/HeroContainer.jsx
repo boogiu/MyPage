@@ -44,8 +44,7 @@ const PageDiv = styled.div`
     position : absolute;
     top : 70%;
 `
-const PageTitle = styled.h3`
-  font-size : 4vmin;
+const PageTitle = styled.h1`
   color : white;
   margin-bottom : 15px; 
 `
