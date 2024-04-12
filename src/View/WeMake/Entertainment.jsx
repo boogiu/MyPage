@@ -20,7 +20,3 @@ function Entertainment() {
   }
   
 export default Entertainment;
-
-const HeroP = style.p`
-  
-`
