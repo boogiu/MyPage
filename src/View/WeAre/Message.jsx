@@ -1,7 +1,8 @@
 import React, { useState,useEffect } from 'react';
 import styled from 'styled-components';
 import HeroContainer from '../../Layouts/HeroContainer';
-
+import { IoIosArrowForward,IoIosArrowBack  } from "react-icons/io";
+import ImgComponent from '../../Layouts/ImgComponent';
 
 function Messages() {
   const [slideIndex, setSlideIndex] = useState(0);
@@ -17,14 +18,28 @@ function Messages() {
   return (
     <Container>
       <HeroContainer imgPath={"/ImgSrc/MessageHero.png"} pageName="메시지" />
-      <SlideContainer>
+      <SlideContainer  BackGroundImage={"/ImgSrc/Ex.jpg"}>
       <Wrapper>
         <SlideBox1 slideIndex={slideIndex}>
           <ColorBox>
             {/* 여기가 3번 슬라이드 */}
+            <h1>막내‘s Comment</h1>
+            <p>저는 인턴인데, 갑자기 회사의 대표자로서, 
+              비전 코멘트를 하라고 하셔서 사실 매우 당황스럽습니다. 
+              힝 이런거 안 시켰으면 좋겠어요 차라리 일을 더 시켜주세요ㅠㅠ 
+              열심히 배워서 성장하겠습니다..
+              이렇게 하면 되나요
+            </p>
+            <p>인턴 김예닮</p>
           </ColorBox>
           <ColorBox>
             {/* 여기가 2번 슬라이드 */}
+             <h1>실세‘s Comment</h1>
+            <p>오럼 파이팅..! 열심히 하는게 중요한 게 아닙니다. 잘’ 해야죠. 
+              잘’ 해서 우리를 믿어주신 분들께 결과로 보여드리겠습니다.
+              가즈아
+            </p>
+            <p>과장 안수현</p>
           </ColorBox>
           <ColorBox>
             {/* 여기가 1번 슬라이드 */}
@@ -48,16 +63,26 @@ function Messages() {
           </ColorBox>
           <ColorBox>
           {/* 여기가 2번 슬라이드 */}
+          <ImgComponent imagePath={"Weare2.png"}
+                Mheight={"200px"}
+                Mwidth={"200px"}
+                Dwidth={"200px"}
+                Dheight={"694px"}/>
           </ColorBox>
           <ColorBox>
            {/* 여기가 3번 슬라이드 */}
+           <ImgComponent imagePath={"Weare2.png"}
+                Mheight={"200px"}
+                Mwidth={"200px"}
+                Dwidth={"200px"}
+                Dheight={"694px"}/>
           </ColorBox>
           
         </SlideBox2>
       </Wrapper>
       <BtnDiv>
-        <Button onClick={prevIndex}>Prev</Button>
-        <Button onClick={nextIndex}>Next</Button>
+        <Button onClick={prevIndex}><IoIosArrowBack /></Button>
+        <Button onClick={nextIndex}><IoIosArrowForward/></Button>
       </BtnDiv>
       <DotDiv>
         <Dot slideIndex={slideIndex} Index={0}/>
@@ -85,7 +110,12 @@ const SlideContainer = styled.div`
   display : flex;
   flex-flow : row;
   position : relative;
-`;
+  background-image: url(${({ BackGroundImage }) => `${process.env.PUBLIC_URL}${BackGroundImage}`});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  `;
 
 const Wrapper = styled.div`
   width:  50vw;
@@ -113,27 +143,24 @@ const SlideBox2 = styled.div`
 const ColorBox = styled.div`
   width: 50vw;
   height: 100%;
-  padding : 10%;
+  padding : 30% 10%;
   background: transparent;
 `;
 const Button = styled.button`
-  background: ${({ theme }) => theme.colors.ButtonColor};
-  color: black;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 20px;
+  background: ${({ theme }) => theme.colors.HashColor};
+  ${({ theme }) => theme.common.StyledButton};
+  padding: 5px 5px;
+  width : 40px;
 `;
 const BtnDiv = styled.div`
   position : absolute;
   z-index : 5;
   width : 100px;
   height : 20px;
-  top : 85%;
+  top : 90%;
   left : 5%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
 `;
 const DotDiv = styled.div`
   position : absolute;
@@ -144,6 +171,8 @@ const DotDiv = styled.div`
   left : 5%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  align-items:center;
+  justify-content:center;
 `;
 const Dot = styled.div`
   width: 20px;
@@ -152,38 +181,3 @@ const Dot = styled.div`
   background: ${({ theme, slideIndex, Index }) =>
     slideIndex === Index ? theme.colors.HashColor : 'grey'};
 `;
-
-
-const ImageContainer = styled.div`
-height : auto;
-object-fit: ;
-background-color: transparent;
-  @media screen and (min-width: 501px) {
-    width : ${({ Dwidth }) => Dwidth};
-    height : ${({ Dheight }) => Dheight};
-    align-self : flex-end;
-  }
-  @media screen and (max-width: 500px) {
-    width : ${({ Mwidth }) => Mwidth};
-    height : ${({ Mheight }) => Mheight};
-    align-self : flex-end;
-  }
-`;
-const ImgComponent = ({ imagePath, rotate, Dwidth,Dheight, Mheight, Mwidth }) => {
-  return (
-      <ImageContainer 
-        rotate={rotate}
-        Mwith= {Mwidth}
-        Dwidth={Dwidth}
-        Mheight= {Mheight}
-        Dheight={Dheight}
-      >
-          <img src={`${process.env.PUBLIC_URL }/ImgSrc/${imagePath}`} 
-          alt="페이지 이미지" 
-          style={{ 
-            maxWidth: '100%', maxHeight: '100%' ,
-          }}/>
-      </ImageContainer>
-      
-  );
-};

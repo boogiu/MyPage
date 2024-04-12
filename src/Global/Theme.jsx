@@ -34,7 +34,6 @@ const common = {
   StyledButton: `
     border : none;
     border-radius: 5px;
-    padding: 10px 25px;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
