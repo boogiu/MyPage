@@ -4,3 +4,4 @@
 
 리액트 아이콘 : npm install react-icons --save
 
+git subtree push --prefix build/ origin gh-pages
