@@ -129,7 +129,7 @@ const BrandTag=styled.div`
   width: 130px;
   color :${({ Color }) => Color};
   border-radius: 20px;
-  border: 1px solid #FFEE53;
+  border: 1px solid ${({ Color }) => Color};;
   background: #000;
   position : absolute;
   top : 50%;
