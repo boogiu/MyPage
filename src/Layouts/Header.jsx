@@ -142,7 +142,7 @@ function Header() {
     transition: 0.5s ease;  
     left: ${({ isMenuOpen }) => (isMenuOpen ? '0' : '100%')};
     color : white;
-    padding: 100px 50px ;
+    padding: 100px 50px 20px 50px;
     display : flex;
     flex-flow : column wrap;
     gap : 10px;
@@ -160,7 +160,7 @@ function Header() {
     flex-flow : row wrap;
     justify-content: space-between;
     align-items: center;
-    margin : 15px 0px;
+    margin : 10px 0px;
   `
   const SubNavDiv = styled.div`
     display : flex;
