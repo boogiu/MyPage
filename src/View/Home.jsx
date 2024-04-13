@@ -3,7 +3,7 @@ import styled from 'styled-components';
 function Home() {
     return (
       <HomeConatainer>
-        <VideoPlayer muted autoPlay loop playsinlinesrc={process.env.PUBLIC_URL + '/VideoSrc/Example.mp4'} >
+        <VideoPlayer muted autoPlay loop playsinline src={process.env.PUBLIC_URL + '/VideoSrc/Example.mp4'} >
         </VideoPlayer>
       </HomeConatainer>
     );
