@@ -36,10 +36,10 @@ function LifePlatform() {
             </AskFor>
             
             <StyledContainer>
-              <StyledBox width={"5px"} color={'#2EFEF7'}/>
-              <StyledBox width={"20px"} color={'#2EFEF7'}/>
-              <StyledBox width={"80px"} color={'#2EFEF7'}/>
-              <StyledBox width={"180px"} color={'#2EFEF7'}/>
+              <StyledBox width={"5px"} color={'#01DF74'}/>
+              <StyledBox width={"20px"} color={'#01DF74'}/>
+              <StyledBox width={"80px"} color={'#01DF74'}/>
+              <StyledBox width={"180px"} color={'#01DF74'}/>
             </StyledContainer>
             <ContactDiv>
               <h1>CONTACT US</h1>
@@ -61,6 +61,12 @@ function LifePlatform() {
                 <p>
                 돈키호테 유닛은, 불특정 다수 대중들의 보편적인 레저 형태에서 벗어나, 그동안 내가 겪어보지 않아서, 생소했던 새로운 경험들과 재미들을 찾고, 내 삶의 일부분으로 융합할 수 있는 라이프 서비스입니다.
                 </p>
+                <HashDiv>
+                  <HashTag><p>#모험적</p></HashTag>
+                  <HashTag><p>#탐험</p></HashTag>
+                  <HashTag><p>#새로움</p></HashTag>
+                  <HashTag><p>#어드벤처</p></HashTag> 
+                </HashDiv>
               </div>
               <div>
                 <ImgComponent imagePath={"Weare2.png"}
@@ -70,6 +76,7 @@ function LifePlatform() {
                   Dheight={"200px"}/>
               </div>
             </ProductCard>
+
             <ProductCard2>
               <div>
                 <ImgComponent imagePath={"Weare2.png"}
@@ -83,6 +90,12 @@ function LifePlatform() {
                 <p>
                 알렉산드리아 유닛은, 그 순간이 지나면 그대로 흘러가 주어담을 수 없는, 실제 삶 속의 나의 말과 행동, 흔적과 기록 중 내가 원하는 것들을 아카이빙하여, 나의 라이프의 가치를 올려줍니다.
                 </p>
+                <HashDiv>
+                  <HashTag><p>#수집</p></HashTag>
+                  <HashTag><p>#기록</p></HashTag>
+                  <HashTag><p>#아카이빙</p></HashTag>
+                  <HashTag><p>#기억</p></HashTag> 
+                </HashDiv>
               </div>    
             </ProductCard2>
             <ProductCard>
@@ -90,6 +103,12 @@ function LifePlatform() {
                 <h2>사트라프</h2>
                 <p>
                 샤프라트 유닛은, 나의 삶을 세상과 가장 밀접한 형태로 연결하여, 같이, 함께 하는 사회 속에서 나의 위치와 정체성을 공고히 하고 더 나아가 그 다음의 방향을 정확하게 탐색하는 라이프 서비스입니다.</p>
+                <HashDiv>
+                  <HashTag><p>#연결</p></HashTag>
+                  <HashTag><p>#상호작용</p></HashTag>
+                  <HashTag><p>#방향</p></HashTag>
+                  <HashTag><p>#긴밀함</p></HashTag> 
+                </HashDiv>
               </div>
               <div>
                 <ImgComponent imagePath={"Weare2.png"}
@@ -254,6 +273,21 @@ const ProductCard2 = styled.div`
     gap : 20px;
     grid-template-rows : 1fr 1fr;
   }
+`
+
+const HashDiv=styled.div`
+  display : flex;
+  flex-flow : row wrap;
+  color: #F0BB00;
+  gap : 5px
+`
+const HashTag=styled.div`
+  wordWrap: break-word;
+  padding : 5px 10px;
+  border: 1px #F0BB00 solid;
+  justifyContent: center;
+  alignItems: center;
+  border-radius: 36px;
 `
 const Empty = styled.div`
 width : 100%;

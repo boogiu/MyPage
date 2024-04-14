@@ -58,8 +58,8 @@ function Messages() {
             <ImgComponent imagePath={"Weare2.png"}
                 Mheight={"200px"}
                 Mwidth={"200px"}
-                Dwidth={"200px"}
-                Dheight={"694px"}/>
+                Dwidth={"600px"}
+                Dheight={"600px"}/>
           </ColorBox>
           <ColorBox>
           {/* 여기가 2번 슬라이드 */}
@@ -106,9 +106,11 @@ const Container = styled.div`
 `;
 const SlideContainer = styled.div`
   width: 100%;
-  height: 60vh;
+  height: 100vh;
   display : flex;
   flex-flow : row;
+  justify-content:center;
+  align-items : center;
   position : relative;
   background-image: url(${({ BackGroundImage }) => `${process.env.PUBLIC_URL}${BackGroundImage}`});
   background-size: cover;

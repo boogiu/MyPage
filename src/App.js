@@ -23,6 +23,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
   import Gallery from "./View/AurumReport/Gallery";
   import Legacy from "./View/AurumReport/Legacy";
   import Community from "./View/AurumReport/Community";
+/** 회원가입 기능 군락 페이지**/
+  import Login from "./View/Login/Login"
+  import Resister from "./View/Login/Resister"
+
 
 import GlobalStyle from "./Global/GlobalStyle";
 import Theme from "./Global/Theme";
@@ -62,6 +66,9 @@ function App() {
           <Route path="/Gallery" element={<Gallery />} />
           <Route path="/Legacy" element={<Legacy />} />
           <Route path="/Community" element={<Community />} />
+          {/* 회원 가입 관련 군락 페이지 */}
+          <Route path="/Login" element={<Login />} />
+          <Route path="/Resister" element={<Resister />} />
         </Routes>
         <Footer/>
       </Router>

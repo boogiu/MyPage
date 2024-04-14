@@ -5,8 +5,15 @@ import { Children, useState } from "react";
 function HeroContainer2({imgPath , children}) {
     // 후버 확인
     const [isHovered, setIsHovered] = useState(false);
+    //스크롤 위치 체킹
+    const [scrollPosition, setScrollPosition] = useState(0);
     const ScrollDown=()=>{
         console.log("내려!");
+        window.scrollTo({
+            top: scrollPosition + window.innerHeight,
+            behavior: 'smooth'
+          });
+          setScrollPosition(scrollPosition + window.innerHeight);
         // 여기에 스크롤 다운 구현
     }
 
