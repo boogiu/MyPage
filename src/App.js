@@ -25,7 +25,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
   import Community from "./View/AurumReport/Community";
 /** 회원가입 기능 군락 페이지**/
   import Login from "./View/Login/Login"
-  import Resister from "./View/Login/Resister"
+  import Register from "./View/Login/Register"
 
 
 import GlobalStyle from "./Global/GlobalStyle";
@@ -68,7 +68,7 @@ function App() {
           <Route path="/Community" element={<Community />} />
           {/* 회원 가입 관련 군락 페이지 */}
           <Route path="/Login" element={<Login />} />
-          <Route path="/Resister" element={<Resister />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
         <Footer/>
       </Router>
