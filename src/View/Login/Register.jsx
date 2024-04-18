@@ -1,26 +1,27 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useDispatch, useSelector } from 'react-redux';
+import api from '../../utils/api';
+import {useNavigate} from 'react-router-dom'
 
 const Register = () => {
 
-  const [Email, setEmail] = useState("");
-  const [Name, setName] = useState("");
-  const [PhNumber, setPhNumber] = useState("");
-  const [Password, setPassword] = useState("");
+  const [logid, setLogid] = useState("");
+  const [name, setName] = useState("");
+  const [phonenumber, setPhNumber] = useState("");
+  const [password, setPassword] = useState("");
   const [ConfirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] =useState("");
+  const navigate = useNavigate();
 
-  const dispatch=useDispatch();
-
-  const onEmailHandler = (event) => {
-    setEmail(event.currentTarget.value);
+  const onIDHandler = (event) => {
+    setLogid(event.currentTarget.value);
   }
   const onPasswordHandler = (event) => {
     setPassword(event.currentTarget.value);
   }
   const onConfirmPasswordHandler = (event) => {
     setConfirmPassword(event.currentTarget.value);
-    if (Password !== ConfirmPassword) {
+    if (password !== ConfirmPassword) {
       return console.log('다른데?')
     }
   }
@@ -32,53 +33,58 @@ const Register = () => {
   }
   
 
-  const onSubmitHandler = (event) => {
+  const onSubmitHandler = async(event) => {
+    
     event.preventDefault();
-    console.log("되긴 해")
-    if (Password !== ConfirmPassword) {
-      return alert('비밀번호와 비밀번호 확인이 같지 않습니다.')
+    try{
+      if (password !== ConfirmPassword) {
+        throw new Error('비밀번호와 비밀번호 확인이 같지 않습니다.')
+      }
+      const response = await api.post('/user',{logid,password,name,phonenumber});
+      if(response.status == 200){
+        navigate('/Login')
+      }
+      else{
+        throw new Error(response.data.error)
+      }
+    }catch(error){
+      setError(error.message);
     }
 
-    let info = {
-      email: Email,
-      password: Password,
-      confirmPassword: ConfirmPassword,
-      name: Name,
-      phnumbr: PhNumber
-    }
-    console.log(info);
   }
 
     return (
       <Container>
         <ResisterBox>
-          <div>
-            회원가입 <br />
-            오럼의 구성원만 로그인 및 회원가입이 가능합니다.
-          </div>
+          <PageInfo>
+            <h1>회원가입 </h1>
+            <p>오럼의 구성원만 로그인 및 회원가입이 가능합니다.</p>
+            {error && <p style={{color : "red"}}>{error}</p>}
+          </PageInfo>
+          
           <FormBox onSubmit={onSubmitHandler}>
             <ResisterDiv>
-              <p>아이디</p>
+              <PlaceHold>아이디</PlaceHold>
               <InputBox
                 type='text'
                 name='ID'
                 placeholder='아이디를 입력해주세요'
-                value={Email}
-                onChange={onEmailHandler}
+                value={logid}
+                onChange={onIDHandler}
               />
             </ResisterDiv>
             <ResisterDiv>
-              <p>비밀번호</p>
+              <PlaceHold>비밀번호</PlaceHold>
               <InputBox
                 type='text'
                 name='비밀번호'
                 placeholder='비밀번호를 입력해주세요'
-                value={Password}
+                value={password}
                 onChange={onPasswordHandler}
               />
             </ResisterDiv>
             <ResisterDiv>
-              <p>비밀번호 확인</p>
+              <PlaceHold>비밀번호 확인</PlaceHold>
               <InputBox
                 type='text'
                 name='비밀번호 확인'
@@ -88,28 +94,28 @@ const Register = () => {
               />
             </ResisterDiv>
             <ResisterDiv>
-              <p>이름</p>
+              <PlaceHold>이름</PlaceHold>
               <InputBox
                 type='text'
                 name='name'
                 placeholder='이름을 입력해주세요'
-                value={Name}
+                value={name}
                 onChange={onNameHandler}
               />
             </ResisterDiv>
             <ResisterDiv>
-              <p>휴대폰</p>
+              <PlaceHold>휴대폰</PlaceHold>
               <InputBox
                 type='text'
                 name='PhNumber'
                 placeholder='숫자만 입력해주세요'
-                value={PhNumber}
+                value={phonenumber}
                 onChange={onPhNumberHandler}
               />
             </ResisterDiv>
-            <button type="submit"> 
+            <StyleBtn type="submit"> 
                 회원가입
-            </button>
+            </StyleBtn>
           </FormBox>
         </ResisterBox>
       </Container>
@@ -125,12 +131,23 @@ const Register = () => {
     height : 100vh;
     color : white;
     overflow-x : hidden;
+    
+`
+const PageInfo = styled.div`
+  ${({ theme }) => theme.common.flexCenterColumn};
+  width : 100%;
+  padding : 10% 10%;
+  text-align : center;
+  
 `
 
   const ResisterBox = styled.div`
   ${({ theme }) => theme.common.flexCenterColumn};
   width : 100%;
   padding : 10% 30%;
+  @media screen and (max-width: 900px) {
+    padding : 5%;
+  }
 `
 
   const FormBox = styled.form`
@@ -139,17 +156,38 @@ const Register = () => {
 `
   const ResisterDiv = styled.div`
   ${({ theme }) => theme.common.flexCenterRow};
-  justify-content : space-between;
+  justify-content : center;
   width : 100%;
+  margin : 25px;
+  @media screen and (max-width: 900px) {
+    ${({ theme }) => theme.common.flexCenterColumn};
+    align-items : flex-start;
+  }
 `
-
+const PlaceHold = styled.p`
+  display: flex;
+  width: 250px;;
+  padding: 14px;
+  align-items: center;
+  color: white;
+`
   const InputBox = styled.input`
   display: flex;
   width: 340px;
   padding: 14px;
   align-items: center;
-  gap: 10px;
   border-radius: 4px;
   background: #232323;
   color: white;
+`
+const StyleBtn = styled.button` 
+  width : 80%;
+  padding : 20px;
+  background: #303030;
+  color : white;
+  margin : 15px;
+  border-radius: 4px;
+  padding: 14px;
+  justify-content: center;
+  align-items: center;
 `

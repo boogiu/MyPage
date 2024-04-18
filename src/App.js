@@ -11,6 +11,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
   import LifePlatform from "./View/WeMake/LifePlatform";
 /** Our Story 군락 페이지**/
   import Columns from "./View/OurStory/Columns";
+  import ColumnDetail from "./Layouts/ColumnDetail"
   import Members from "./View/OurStory/Members";
   import FootPrint from "./View/OurStory/FootPrint";
   import AboutUs from "./View/OurStory/AboutUs";
@@ -54,6 +55,8 @@ function App() {
           <Route path="/LifePlatform" element={<LifePlatform />} />
           {/* Our Story 군락 페이지 */}
           <Route path="/Columns" element={<Columns />} />
+          <Route path="/Columns/:idx" element={<ColumnDetail/>}/>
+
           <Route path="/Members" element={<Members />} />
           <Route path="/FootPrint" element={<FootPrint />} />
           <Route path="/AboutUs" element={<AboutUs />} />
